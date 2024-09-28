@@ -1,4 +1,50 @@
 # Client Task A #
 # Add your pseudocode to this file below this line: #
 # ------------------------------------------------- #
+// Number Guessing Game (with different praise messages)
 
+START
+
+  // Step 1: Generate a random number between 1 and 10
+  SET secretNumber = RANDOM(1, 10)
+  
+  // Step 2: Initialize attempts counter
+  SET attempts = 0
+  SET maxAttempts = 3
+  SET hasWon = FALSE
+  
+  // Step 3: Start the guessing loop
+  WHILE attempts < maxAttempts AND hasWon = FALSE DO
+    
+    // Ask the player for a guess
+    PRINT "Enter your guess (1-10):"
+    INPUT playerGuess
+
+    // Step 4: Check if the guess is correct
+    IF playerGuess = secretNumber THEN
+      SET hasWon = TRUE
+      
+      // Step 5: Provide different praise based on which attempt
+      IF attempts = 0 THEN
+        PRINT "Amazing! You got it on the first try!"
+      ELSE IF attempts = 1 THEN
+        PRINT "Great job! You got it on your second try!"
+      ELSE IF attempts = 2 THEN
+        PRINT "Good work! You got it on your last try!"
+      ENDIF
+    ELSE IF playerGuess > secretNumber THEN
+      PRINT "Too high! Try again."
+    ELSE
+      PRINT "Too low! Try again."
+    ENDIF
+
+    // Increment attempts
+    SET attempts = attempts + 1
+  END WHILE
+
+  // Step 6: If the player did not win, reveal the correct number
+  IF hasWon = FALSE THEN
+    PRINT "Sorry, you're out of attempts. The correct number was: " + secretNumber
+  ENDIF
+
+END
