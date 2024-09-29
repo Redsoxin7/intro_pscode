@@ -1,50 +1,49 @@
 # Client Task A #
 # Add your pseudocode to this file below this line: #
 # ------------------------------------------------- #
-// Number Guessing Game (with different praise messages)
-
 START
 
-  // Step 1: Generate a random number between 1 and 10
-  SET secretNumber = RANDOM(1, 10)
-  
-  // Step 2: Initialize attempts counter
-  SET attempts = 0
-  SET maxAttempts = 3
-  SET hasWon = FALSE
-  
-  // Step 3: Start the guessing loop
-  WHILE attempts < maxAttempts AND hasWon = FALSE DO
-    
-    // Ask the player for a guess
-    PRINT "Enter your guess (1-10):"
-    INPUT playerGuess
+# Step 1: The computer picks a secret number between 1 and 10.
+secret_number = RANDOM(1, 10)
 
-    // Step 4: Check if the guess is correct
-    IF playerGuess = secretNumber THEN
-      SET hasWon = TRUE
-      
-      // Step 5: Provide different praise based on which attempt
-      IF attempts = 0 THEN
-        PRINT "Amazing! You got it on the first try!"
-      ELSE IF attempts = 1 THEN
-        PRINT "Great job! You got it on your second try!"
-      ELSE IF attempts = 2 THEN
-        PRINT "Good work! You got it on your last try!"
-      ENDIF
-    ELSE IF playerGuess > secretNumber THEN
-      PRINT "Too high! Try again."
-    ELSE
-      PRINT "Too low! Try again."
+# Step 2: Keep track of how many guesses the player has used.
+attempts = 0
+max_attempts = 3
+has_won = FALSE
+
+# Step 3: Time for the player to start guesing!
+WHILE attempts < max_attempts AND has_won == FALSE:
+
+    # Ask the player to take a guess.
+    DISPLAY "Enter your guess (1-10):"
+    INPUT player_guess
+
+    # Step 4: Check their guess to the secret number.
+    IF player_guess == secret_number:
+        has_won = TRUE
+        
+        # Step 5: Give different praise depending on how quickly they guess correctly.
+        IF attempts == 0:
+            DISPLAY "Amazing! You got it on the first try!"
+        ELSE IF attempts == 1:
+            DISPLAY "Great job! You got it on your second try!"
+        ELSE IF attempts == 2:
+            DISPLAY "Good work! You got it on your last try!"
+        ENDIF
+    ELSE IF player_guess > secret_number:
+        DISPLAY "Too high! Try again."
+    ELSE:
+        DISPLAY "Too low! Try again."
     ENDIF
 
-    // Increment attempts
-    SET attempts = attempts + 1
-  END WHILE
+    # Count this attempt.
+    attempts = attempts + 1
 
-  // Step 6: If the player did not win, reveal the correct number
-  IF hasWon = FALSE THEN
-    PRINT "Sorry, you're out of attempts. The correct number was: " + secretNumber
-  ENDIF
+END WHILE
+
+# Step 6: If they didn’t win, let them know the secret number.
+IF has_won == FALSE:
+    DISPLAY "Sorry, you're out of attempts. The correct number was: " + secret_number
+ENDIF
 
 END
