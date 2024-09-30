@@ -1,4 +1,43 @@
 # Client Task B #
 # Add your pseudocode to this file below this line: #
 # ------------------------------------------------- #
+START
 
+# The warehouse is a big grid. The customer is somewhere on it.
+customer_pos = (start_x, start_y)
+
+# They want to get to a specific spot in the store.
+goal = (dest_x, dest_y)
+
+# The directions they can walk are simple: north, south, east, or west.
+DIRECTIONS = {
+    'north': (-1, 0),  # north is up
+    'south': (1, 0),   # south is down
+    'east': (0, 1),    # east is right
+    'west': (0, -1)    # west is left
+}
+
+# Let’s start the process. We'll keep asking until they reach the goal.
+WHILE customer_pos != goal:
+    # Let them know where they are.
+    DISPLAY "You're here: " + customer_pos
+    
+    # Ask where they want to go.
+    DISPLAY "Where to? (north, south, east, west): "
+    INPUT direction
+
+    # Now, let’s see where they would move based on what they chose.
+    new_pos = (customer_pos[0] + DIRECTIONS[direction][0], 
+               customer_pos[1] + DIRECTIONS[direction][1])
+
+    # Check if the new position is okay (not outside the store boundaries).
+    IF new_pos IS inside_store():
+        customer_pos = new_pos
+        DISPLAY "You moved " + direction
+    ELSE:
+        DISPLAY "Oops! Can't go " + direction + ". There's a wall or edge!"
+
+# Once they’re at the goal, celebrate!
+DISPLAY "Woohoo! You made it to " + goal + "!"
+
+END
