@@ -1,4 +1,25 @@
 # Client Task C #
 # Add your pseudocode to this file below this line: #
 # ------------------------------------------------- #
+START
 
+# So, let’s count the number of packages that the hardware device scans.
+
+# Each package has 2 products.
+products_per_package = 2
+
+# A case can only hold 50 packages.
+max_packages_per_case = 50
+
+# We’re going to count packages starting from 2 products up to 100 products (50 packages).
+products_scanned = 0
+
+# We’ll start counting from 2 (since each scan counts 2 products) and keep going by twos.
+FOR products_scanned FROM 2 TO (max_packages_per_case * products_per_package) STEP products_per_package:
+    # Display how many products have been scanned so far.
+    DISPLAY "Scanned " + products_scanned + " products"
+
+# Once we hit 100 (50 packages), we’re done!
+DISPLAY "Done! You’ve scanned a full case of 50 packages."
+
+END
